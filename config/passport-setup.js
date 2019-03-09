@@ -14,7 +14,7 @@ passport.deserializeUser((id, done)=>{
 passport.use(
   new GoogleStrategy({
   //options for the strategy
-  callbackURL: 'https://www.sipcalc.in/auth/google/redirect',
+  callbackURL: '/auth/google/redirect',
   clientID: credentials.web.client_id,
   clientSecret: credentials.web.client_secret
 }, (accessToken, refreshToken, profile, done)=>{

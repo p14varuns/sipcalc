@@ -40,7 +40,7 @@ var addReading = (req, res) => {
 
   var obj = req.body;
   if(!obj.nav){
-    obj.nav = 100;
+    obj.nav = 1000;
     obj.totalunits = obj.totalvalue / obj.nav;
     delete obj.units;
     delete obj.unitsadded;

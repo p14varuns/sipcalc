@@ -186,35 +186,33 @@
 		$(document).ready(function () {
       
       calculate();
-
       document.querySelector("#logDate").valueAsDate = new Date();
 
-			  $(".form-control").change(function() {
-                calculate();
-            });
+    });
+
+    $(".form-control").change(function() {
+            calculate();
+    });
 			
-        });
+    function calculate(){
+        $("#total").val(
+            parseFloat($("#equity").val()) + 
+            parseFloat($("#mf").val()) + 
+            parseFloat($("#cash").val())
+        );
+
+        $("#nav").val((parseFloat($("#total").val()) /  parseFloat($("#units").val())).toFixed(2));  
         
-        function calculate(){
-            $("#total").val(
-                parseFloat($("#equity").val()) + 
-                parseFloat($("#mf").val()) + 
-                parseFloat($("#cash").val())
-            );
+        $("#unitsadded").val((parseFloat($("#addcash").val()) / parseFloat($("#nav").val())).toFixed(2));
 
-            
-            $("#nav").val((parseFloat($("#total").val()) /  parseFloat($("#units").val())).toFixed(2));  
-            
-            $("#unitsadded").val((parseFloat($("#addcash").val()) / parseFloat($("#nav").val())).toFixed(2));
+        $("#totalunits").val((
+            parseFloat($("#units").val()) + parseFloat($("#unitsadded").val())).toFixed(2));
 
-            $("#totalunits").val((
-                parseFloat($("#units").val()) + parseFloat($("#unitsadded").val())).toFixed(2));
+        $("#totalvalue").val((
+            parseFloat($("#total").val()) + parseFloat($("#addcash").val())
+        ).toFixed());
 
-            $("#totalvalue").val((
-                parseFloat($("#total").val()) + parseFloat($("#addcash").val())
-            ).toFixed());
-        
-        };
+    };
 	
     </script>
   </body>
