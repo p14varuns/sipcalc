@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SIP Calculator</title>
+
+    <!-- Icon from https://www.flaticon.com/free-icon/letter-s_511139 -->
+    <link rel="icon" href="/assets/img/letter-s.png" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/assets/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/landing-page.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">SIP Calculator</a>
+      </div>
+
+    </nav>
+
+    <!-- Icons Grid -->
+    <section class="features-icons bg-white text-left">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+          <form action="/" method="post">
+            <div class="form-group">
+              <label for="lumpsum">Initial Lumpsum (Rs. lacs)</label>
+              <input type="text" class="form-control" name="lumpsum" placeholder="0" value="<%= values.lumpsum %>">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="sip">Monthly Investment (Rs. 000s)</label>
+                <input type="text" class="form-control" name="sip" placeholder="20" value="<%= values.sip %>">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="increase">Annual Increase (%)</label>
+                <input type="text" class="form-control" name="increase" placeholder="0" value="<%= values.increase %>">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="return">Expected Annual Returns (%)</label>
+                <input type="text" class="form-control" name="rate" placeholder="15" value="<%= values.rate %>">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="period">Investment Period (yrs)</label>
+                <input type="text" class="form-control" name="period" placeholder="10" value="<%= values.period %>">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-2">Calculate</button>
+            </form>
+          </div>
+          <div class="col-lg-6">
+            <div id="summary-box">
+              <div class="mb-2">Summary</div>
+              <div>
+                <table class="table table-striped">
+                  <tbody>
+                    <tr>
+                      <td>Expected Amount</td>
+                      <td>Rs <%= summary.expected %> lacs</td>
+                    </tr>
+                    <tr>
+                      <td>Amount Invested</td>
+                      <td>Rs <%= summary.invested %> lacs</td>
+                    </tr>
+                    <tr>
+                      <td>Wealth Gain</td>
+                      <td>Rs <%= summary.gain %> lacs</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item">
+                <a href="/about">About</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/portfolio">Portfolio</a>
+              </li>
+              <!----<li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>-->
+              <!--<li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>-->
+            </ul>
+            <!--<p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2018. All Rights Reserved.</p>-->
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <a href="https://twitter.com/SrVarun" target="_blank">
+                  <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <!--<li class="list-inline-item">
+                <a href="#" target="_blank">
+                  <i class="fab fa-linkedin fa-2x fa-fw"></i>
+                </a>
+              </li>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

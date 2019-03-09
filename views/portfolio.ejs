@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SIP Calculator</title>
+
+    <!-- Icon from https://www.flaticon.com/free-icon/letter-s_511139 -->
+    <link rel="icon" href="/assets/img/letter-s.png" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/assets/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/landing-page.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">SIP Calculator</a>
+        <a class="btn btn-outline-secondary" href="/logout" role="button">Log Out</a>
+      </div>
+    </nav>
+
+    <!-- Icons Grid -->
+    <section class="features-icons bg-white text-left">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+          <form action="/portfolio" method="post">
+            <div class="form-group row">
+                <label for="equity" class="col-md-2 col-form-label">Date</label>
+                <div class="col-md-6">
+                  <input type="date" class="form-control" name="logDate" id="logDate">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="equity" class="col-md-2 col-form-label">Equity</label>
+                <div class="col-md-6">
+                  <input type="number" min=0 step="any" class="form-control" name="equity" id="equity" value="<%= oldvals.equity %>">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="mf" class="col-md-2 col-form-label">MF</label>
+                <div class="col-md-6">
+                  <input type="number" min=0 step="any" class="form-control" name="mf" id="mf" value="<%= oldvals.mf %>">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="cash" class="col-md-2 col-form-label">Cash</label>
+                <div class="col-md-6">
+                  <input type="number" min=0 step="any" class="form-control" name="cash" id="cash" value="<%= oldvals.cash + oldvals.addcash %>">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="total" class="col-md-2 col-form-label">Total</label>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" id="total" value="" readonly>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="units" class="col-md-2 col-form-label">Units</label>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" name="units" id="units" value="<%= oldvals.totalunits %>" readonly>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="nav" class="col-md-2 col-form-label">NAV</label>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" name="nav" id="nav" value="100" readonly>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="addcash" class="col-md-2 col-form-label">Add Cash</label>
+                <div class="col-md-6">
+                  <input type="number" min=0 step="any" class="form-control" name="addcash" id="addcash" value="0">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="return">Units Added</label>
+                  <input type="number" class="form-control" id="unitsadded" name="unitsadded" placeholder="0" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="period">Total Units</label>
+                  <input type="text" class="form-control" id="totalunits" name="totalunits" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="period">Total Value</label>
+                    <input type="text" class="form-control" id="totalvalue" name="totalvalue" readonly>
+                  </div>
+              </div>
+
+            <button type="submit" class="btn btn-primary mb-2">Record</button>
+            </form>
+          </div>
+          <div class="col-lg-6">
+            <div id="summary-box">
+              <div class="mb-2">History</div>
+              <div>
+                <table class="table table-striped">
+                    <caption>Data log</caption>
+                    <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>NAV</th>
+                          <th>Units</th>
+                          <th>Portfolio Value (Rs.)</th>
+                        </tr>
+                      </thead>
+                  <tbody>
+                      <% for(i=0; i < logs.length; i++){ %>
+                    <tr>
+                      <td><%= moment(logs[i].logDate).format( 'DD-MMM-YYYY') %></td>
+                      <td><%= logs[i].nav %></td>
+                      <td><%= logs[i].totalunits %></td>
+                      <td><%= logs[i].totalvalue %></td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item">
+                <a href="/about">About</a>
+              </li>
+              <li class="list-inline-item">
+                  <a href="/Portfolio">Portfolio</a>
+              </li>              
+            </ul>
+            <!--<p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2018. All Rights Reserved.</p>-->
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <a href="https://twitter.com/SrVarun" target="_blank">
+                  <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <!--<li class="list-inline-item">
+                <a href="#" target="_blank">
+                  <i class="fab fa-linkedin fa-2x fa-fw"></i>
+                </a>
+              </li>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        
+    <script>
+    
+		$(document).ready(function () {
+      
+      calculate();
+
+      document.querySelector("#logDate").valueAsDate = new Date();
+
+			  $(".form-control").change(function() {
+                calculate();
+            });
+			
+        });
+        
+        function calculate(){
+            $("#total").val(
+                parseFloat($("#equity").val()) + 
+                parseFloat($("#mf").val()) + 
+                parseFloat($("#cash").val())
+            );
+
+            
+            $("#nav").val((parseFloat($("#total").val()) /  parseFloat($("#units").val())).toFixed(2));  
+            
+            $("#unitsadded").val((parseFloat($("#addcash").val()) / parseFloat($("#nav").val())).toFixed(2));
+
+            $("#totalunits").val((
+                parseFloat($("#units").val()) + parseFloat($("#unitsadded").val())).toFixed(2));
+
+            $("#totalvalue").val((
+                parseFloat($("#total").val()) + parseFloat($("#addcash").val())
+            ).toFixed());
+        
+        };
+	
+    </script>
+  </body>
+
+</html>
