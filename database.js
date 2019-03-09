@@ -1,12 +1,8 @@
 console.log("Starting DB connection");
 const mysql = require('mysql');
+const mode = require("./config/mode");
 
-const PROD = 1
-const DEV = 0;
-
-var mode = PROD;
-
-if(mode == PROD){
+if(mode.env == mode.PROD){
   var con = mysql.createConnection({
     host: "mysql-instance.cgzlvpwmrz7n.ap-south-1.rds.amazonaws.com",
     user: "root",
