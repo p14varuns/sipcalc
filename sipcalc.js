@@ -1,6 +1,6 @@
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 3001
-
+var path = require('path');
 const isNumber = require('is-number');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -68,6 +68,11 @@ app.post('/', encodedParser, function(req, res) {
 
 app.get('/about', function(req, res) {
   res.render('about');
+});
+
+app.get('/sitemap.xml', function(req, res) {
+  res.sendFile(path.join(__dirname + '/sitemap.xml'));
+  //res.sendFile('sitemap.xml');
 });
 /*
 app.get('/portfolio', function(req, res) {
