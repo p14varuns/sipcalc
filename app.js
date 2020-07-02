@@ -8,7 +8,7 @@ const encodedParser = bodyParser.urlencoded({
   extended: false
 });
 const lib = require('./lib');
-const portfolio = require('./portfolio');
+//const portfolio = require('./portfolio');
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup.js');
 
@@ -32,9 +32,9 @@ app.use(passport.session());
 app.get('/', function(req, res) {
   var values = {
     "lumpsum": 1,
-    "sip": 20, 
-    "increase": 0, 
-    "rate": 15, 
+    "sip": 20,
+    "increase": 0,
+    "rate": 15,
     "period": 10
   }
 
@@ -69,15 +69,15 @@ app.post('/', encodedParser, function(req, res) {
 app.get('/about', function(req, res) {
   res.render('about');
 });
-
+/*
 app.get('/portfolio', function(req, res) {
-  
+
   if(req && req.hasOwnProperty("user")){
     portfolio.fetchPortfolio(req, res);
-  }  
+  }
   else
     res.redirect('/auth/google');
-  
+
 });
 
 app.post('/portfolio', encodedParser, function(req, res) {
@@ -98,8 +98,9 @@ app.get('/logout',(req,res)=>{
   //handle with passport
   req.logout();
   res.redirect('/');
-  
+
 });
+*/
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
