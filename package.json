@@ -15,7 +15,7 @@
     "express": "^4.16.4",
     "is-number": "^7.0.0",
     "merge": "^1.2.1",
-    "moment": "^2.23.0",
+    "moment": "^2.29.2",
     "mysql": "^2.16.0",
     "mysql-backbone": "^1.0.1",
     "mysql-model": "0.0.3",
